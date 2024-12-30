@@ -170,7 +170,7 @@ int main() {
                 std::printf("%u,%u,%u\n", rgb_sensor.r_comp, rgb_sensor.g_comp, rgb_sensor.b_comp);
                 #endif
                 counter++;
-                sleep_ms(200);
+                // sleep_ms(200); // delay is already added 
             } else {
 
                 std::printf("################################## THIS IS THE END. COPY ALL THE ABOVE! ###################################\n");
