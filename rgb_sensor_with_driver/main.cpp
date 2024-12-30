@@ -106,6 +106,8 @@ void tcs34725::getData() {
     g_comp = g - ir;
     b_comp = b - ir;
     c_comp = c - ir;
+    
+    #ifdef DEBUG
     cratio = static_cast<float>(ir) / static_cast<float>(c);
 
     saturation = ((256 - atime) > 63) ? 65535 : 1024 * (256 - atime);
@@ -116,6 +118,7 @@ void tcs34725::getData() {
 
     lux = (TCS34725_R_Coef * static_cast<float>(r_comp) + TCS34725_G_Coef * static_cast<float>(g_comp) + TCS34725_B_Coef * static_cast<float>(b_comp)) / cpl;
     ct = TCS34725_CT_Coef * static_cast<float>(b_comp) / static_cast<float>(r_comp) + TCS34725_CT_Offset;
+    #endif
 }
 
 tcs34725 rgb_sensor;
@@ -161,6 +164,8 @@ int main() {
                 std::printf("Compensated R: %u G: %u B: %u C: %u\n", rgb_sensor.r_comp, rgb_sensor.g_comp, rgb_sensor.b_comp, rgb_sensor.c_comp);
                 std::printf("Lux: %.2f CT: %.2fK\n\n", rgb_sensor.lux, rgb_sensor.ct);
                 #endif
+
+
                 #ifndef DEBUG
                 std::printf("%u,%u,%u\n", rgb_sensor.r_comp, rgb_sensor.g_comp, rgb_sensor.b_comp);
                 #endif
