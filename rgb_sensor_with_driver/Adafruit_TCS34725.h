@@ -1,5 +1,8 @@
 /**************************************************************************/
 /*!
+    This file is based on the Adafruit implementation.
+    This is a port to Raspberry Pi Pico
+    
     @file     Adafruit_TCS34725.h
     @author   KTOWN (Adafruit Industries)
 
