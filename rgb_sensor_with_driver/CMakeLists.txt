@@ -1,4 +1,3 @@
-# == DO NOT EDIT THE FOLLOWING LINES for the Raspberry Pi Pico VS Code Extension to work ==
 if(WIN32)
     set(USERHOME $ENV{USERPROFILE})
 else()
@@ -50,6 +49,8 @@ pico_sdk_init()
 # Add executable. Default name is the project name, version 0.1
 
 add_executable(rgb_sensor_with_driver Adafruit_TCS34725.cpp
+TCS34725_utils.cpp
+setup.cpp
 main.cpp
 )
 
