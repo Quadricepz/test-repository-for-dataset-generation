@@ -137,7 +137,7 @@ void loop() {
   float y2 = (y2_quantized - output->params.zero_point) * output->params.scale;
   float y3 = (y3_quantized - output->params.zero_point) * output->params.scale;
 
-  MicroPrintf("Model outputs: Apple: %f, lemon: %f, Orange: %f \n", y1, y2, y3);
+  MicroPrintf("Model outputs: Class0: %f, Class1: %f, Class2: %f \n", y1, y2, y3);
 
   // Increment the inference_counter, and reset it if we have reached
   // the total number per cycle
