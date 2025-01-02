@@ -6,7 +6,7 @@
 // #define DEBUG 
 
 
-#define MAX_SAMPLES 900
+const uint16_t MAX_SAMPLES = 900;
 
 extern tcs34725 rgb_sensor;
 
