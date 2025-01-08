@@ -1,0 +1,10 @@
+#ifndef CONFIG_H
+#define CONFIG_H
+
+
+#define CLASSNAME0 "EL PATRONE"
+#define CLASSNAME1 "EL COCKTAIL"
+#define CLASSNAME2 "LARANJA"
+
+
+#endif

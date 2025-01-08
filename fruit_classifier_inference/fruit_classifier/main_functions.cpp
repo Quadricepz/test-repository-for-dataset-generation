@@ -12,7 +12,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
-
+#include "config.h"
 #include "constants.h"
 #include "main_functions.h"
 #include "tensorflow/lite/micro/micro_interpreter.h"
@@ -137,7 +137,7 @@ void loop() {
   float y2 = (y2_quantized - output->params.zero_point) * output->params.scale;
   float y3 = (y3_quantized - output->params.zero_point) * output->params.scale;
 
-  MicroPrintf("Model outputs: Class0: %f, Class1: %f, Class2: %f \n", y1, y2, y3);
+  MicroPrintf("Model outputs: %s: %f, %s: %f, %s: %f \n", CLASSNAME0, y1, CLASSNAME1, y2, CLASSNAME2, y3);
 
   // Increment the inference_counter, and reset it if we have reached
   // the total number per cycle
