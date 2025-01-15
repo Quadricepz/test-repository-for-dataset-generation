@@ -3,7 +3,7 @@
 
 
 #define CLASSNAME0 "Apple"
-#define CLASSNAME1 "Banana
+#define CLASSNAME1 "Banana"
 #define CLASSNAME2 "Lemon"
 
 
