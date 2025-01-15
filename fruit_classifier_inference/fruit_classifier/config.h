@@ -2,9 +2,9 @@
 #define CONFIG_H
 
 
-#define CLASSNAME0 "EL PATRONE"
-#define CLASSNAME1 "EL COCKTAIL"
-#define CLASSNAME2 "LARANJA"
+#define CLASSNAME0 "Apple"
+#define CLASSNAME1 "Banana
+#define CLASSNAME2 "Lemon"
 
 
 #endif
