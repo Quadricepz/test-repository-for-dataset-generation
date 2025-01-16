@@ -110,10 +110,12 @@ void loop() {
 
   // Get the Sensor RGB Data
   rgb_sensor.getData();
-  // Quantize the inputs from uint16_t to uint8_t
-  uint8_t redChannelQuantized   = static_cast<uint8_t>(rgb_sensor.r_comp / 256);
-  uint8_t greenChannelQuantized = static_cast<uint8_t>(rgb_sensor.g_comp / 256);
-  uint8_t blueChannelQuantized  = static_cast<uint8_t>(rgb_sensor.b_comp / 256);
+
+  // Cast the inputs from uint16_t to float_t
+  const float_t kMaxColorValue = 65535.0f;
+  float_t redChannelQuantized   = static_cast<float_t>(rgb_sensor.r_comp) / kMaxColorValue;
+  float_t greenChannelQuantized = static_cast<float_t>(rgb_sensor.g_comp) / kMaxColorValue;
+  float_t blueChannelQuantized  = static_cast<float_t>(rgb_sensor.b_comp) / kMaxColorValue;
 
   // Place the quantized inputs in the model's input tensor
   input->data.uint8[0] = redChannelQuantized;
@@ -142,6 +144,4 @@ void loop() {
   // Increment the inference_counter, and reset it if we have reached
   // the total number per cycle
   inference_count += 1;
-  if (inference_count >= kInferencesPerCycle) inference_count = 0;
-}
-
+  if (inference_count >= kInferencesPerCycle) inference_count =floa65535.0
