@@ -101,31 +101,29 @@ void initialize_all() {
   input = interpreter->input(0);
   output = interpreter->output(0);
 
-  // Keep track of how many inferences we have performed.
-  // inference_count = 0;
 }
 
 // The name of this function is important for Arduino compatibility.
 void loop() {
 
-  // Get the Sensor RGB Data
+  // Get the Sensor RGB Data in raw uint16_t
   rgb_sensor.getData();
-
+  
   // Cast the inputs from uint16_t to float_t
   const float_t kMaxColorValue = 65535.0f;
-  float_t redChannelQuantized   = static_cast<float_t>(rgb_sensor.r_comp) / kMaxColorValue;
-  float_t greenChannelQuantized = static_cast<float_t>(rgb_sensor.g_comp) / kMaxColorValue;
-  float_t blueChannelQuantized  = static_cast<float_t>(rgb_sensor.b_comp) / kMaxColorValue;
+  float_t redChannelNormalized   = static_cast<float_t>(rgb_sensor.r_comp) / kMaxColorValue;
+  float_t greenChannelNormalized = static_cast<float_t>(rgb_sensor.g_comp) / kMaxColorValue;
+  float_t blueChannelNormalized  = static_cast<float_t>(rgb_sensor.b_comp) / kMaxColorValue;
 
   // Place the quantized inputs in the model's input tensor
-  input->data.uint8[0] = redChannelQuantized;
-  input->data.uint8[1] = greenChannelQuantized;
-  input->data.uint8[2] = blueChannelQuantized;
+  input->data.f[0] = redChannelNormalized;
+  input->data.f[1] = greenChannelNormalized;
+  input->data.f[2] = blueChannelNormalized;
 
   // Run inference, and report any error
   TfLiteStatus invoke_status = interpreter->Invoke();
   if (invoke_status != kTfLiteOk) {
-    MicroPrintf("Invoke failed on x1: %f, x2: %f, x3: %f\n", static_cast<double>(redChannelQuantized), static_cast<double>(greenChannelQuantized), static_cast<double>(blueChannelQuantized));
+    MicroPrintf("Invoke failed on x1: %f, x2: %f, x3: %f\n", static_cast<double>(redChannelNormalized), static_cast<double>(greenChannelNormalized), static_cast<double>(blueChannelNormalized));
     return;
   }
 
@@ -142,4 +140,4 @@ void loop() {
   MicroPrintf("Model outputs: %s: %f, %s: %f, %s: %f \n", CLASSNAME0, y1, CLASSNAME1, y2, CLASSNAME2, y3);
 
 }
-  
+
