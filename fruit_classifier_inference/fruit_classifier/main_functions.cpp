@@ -37,6 +37,8 @@ int inference_count = 0;
 
 constexpr int kTensorArenaSize = 100000;
 uint8_t tensor_arena[kTensorArenaSize];
+
+constexpr float_t kMaxColorValue = 65535.0f;
 }  // namespace
 
 
@@ -110,7 +112,6 @@ void loop() {
   rgb_sensor.getData();
   
   // Cast the inputs from uint16_t to float_t
-  const float_t kMaxColorValue = 65535.0f;
   float_t redChannelNormalized   = static_cast<float_t>(rgb_sensor.r_comp) / kMaxColorValue;
   float_t greenChannelNormalized = static_cast<float_t>(rgb_sensor.g_comp) / kMaxColorValue;
   float_t blueChannelNormalized  = static_cast<float_t>(rgb_sensor.b_comp) / kMaxColorValue;
