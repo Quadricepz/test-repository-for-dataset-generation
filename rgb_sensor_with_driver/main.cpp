@@ -32,14 +32,6 @@ int main() {
                 rgb_sensor.getData();
 
                 #ifdef DEBUG
-                // std::printf("%dx,%dms,0x%x,%u,%u,%u,%u,%u,%.2f,%u,%u,%s,%.2f,%.2f,%u,%u,%u,%u,%.2f,%.2fK\n", 
-                //             rgb_sensor.againx, rgb_sensor.atime_ms, rgb_sensor.atime, 
-                //             rgb_sensor.r, rgb_sensor.g, rgb_sensor.b, rgb_sensor.c, 
-                //             rgb_sensor.ir, rgb_sensor.cratio, rgb_sensor.saturation, 
-                //             rgb_sensor.saturation75, rgb_sensor.isSaturated ? "*SATURATED*" : "", 
-                //             rgb_sensor.cpl, rgb_sensor.maxlux, rgb_sensor.r_comp, 
-                //             rgb_sensor.g_comp, rgb_sensor.b_comp, rgb_sensor.c_comp, 
-                //             rgb_sensor.lux, rgb_sensor.ct);
                 std::printf("Gain: %dx Time: %dms (0x%x)\n", rgb_sensor.againx, rgb_sensor.atime_ms, rgb_sensor.atime);
                 std::printf("Raw R: %u G: %u B: %u C: %u\n", rgb_sensor.r, rgb_sensor.g, rgb_sensor.b, rgb_sensor.c);
                 std::printf("IR: %u CRATIO: %.2f Sat: %u Sat75: %u %s\n", rgb_sensor.ir, rgb_sensor.cratio, rgb_sensor.saturation, rgb_sensor.saturation75, rgb_sensor.isSaturated ? "*SATURATED*" : "");
