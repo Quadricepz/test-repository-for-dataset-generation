@@ -102,7 +102,7 @@ void initialize_all() {
   output = interpreter->output(0);
 
   // Keep track of how many inferences we have performed.
-  inference_count = 0;
+  // inference_count = 0;
 }
 
 // The name of this function is important for Arduino compatibility.
@@ -141,7 +141,5 @@ void loop() {
 
   MicroPrintf("Model outputs: %s: %f, %s: %f, %s: %f \n", CLASSNAME0, y1, CLASSNAME1, y2, CLASSNAME2, y3);
 
-  // Increment the inference_counter, and reset it if we have reached
-  // the total number per cycle
-  inference_count += 1;
-  if (inference_count >= kInferencesPerCycle) inference_count =floa65535.0
+}
+  
